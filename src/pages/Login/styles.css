@@ -1,0 +1,33 @@
+.boxContainer-login {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh;
+  padding: 40px;
+  padding-top: 80px;
+  background-image: url('../../assets/bg.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.form-login {
+  width: 100%;
+  background-color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 20px !important;
+  border-radius: 8px;
+  margin-top: 60px !important;
+  max-width: 400px;
+}
+
+.title-login {
+  color: #07004d;
+  margin-bottom: 30px;
+  font-size: 32px;
+  font-weight: 700;
+}

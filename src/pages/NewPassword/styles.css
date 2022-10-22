@@ -1,0 +1,43 @@
+.boxContainer {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh;
+  padding: 40px;
+  padding-top: 80px;
+}
+
+.bgImage {
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.form {
+  width: 100%;
+  background-color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 20px !important;
+  border-radius: 8px;
+  margin-top: 60px !important;
+  max-width: 400px;
+}
+
+.title {
+  color: #07004d;
+  margin-bottom: 30px;
+  font-size: 32px;
+  font-weight: 700;
+}
+
+.button {
+  transition: filter 0.2s;
+}
+
+.button:hover {
+  filter: opacity(0.8);
+}
