@@ -8,8 +8,6 @@ import {
   DialogContentText,
   DialogTitle,
   FormControl,
-  Input,
-  InputAdornment,
   InputLabel,
   MenuItem,
   Select,
@@ -47,7 +45,7 @@ const Transition = React.forwardRef(function Transition(
 });
 
 const Dashboard = () => {
-  const [eventos, setEventos] = useState(eventosJson);
+  // const [eventos, setEventos] = useState(eventosJson);
   const [tocarEvento, setTocarEvento] = useState('');
   const [dataEvento, setDataEvento] = useState('');
   const [eventosFiltrados, setEventosFiltrados] = useState<Evento[]>([]);
