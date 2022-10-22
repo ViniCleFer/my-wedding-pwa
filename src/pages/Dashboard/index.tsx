@@ -231,7 +231,6 @@ const Dashboard = () => {
         </DialogContent>
         <DialogActions className='footer' sx={{ paddingBottom: '16px' }}>
           <Button
-            sx={{ marginRight: '20px' }}
             variant='outlined'
             className={'borderButtonColor'}
             endIcon={
@@ -248,7 +247,6 @@ const Dashboard = () => {
             {linkCopiado ? 'Link Copiado' : 'Copie o Link'}
           </Button>
           <Button
-            sx={{ marginRight: '24px' }}
             variant='contained'
             autoCapitalize='none'
             className={'backgroundButtonColor'}
