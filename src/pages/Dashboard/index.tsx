@@ -12,14 +12,12 @@ import {
   InputLabel,
   MenuItem,
   Select,
-  // IconButton,
   Slide,
   TextField,
 } from '@mui/material';
 import {
   ContentCopy,
   CheckCircleOutline,
-  // CloseOutlined,
   ArrowForwardOutlined,
   SearchRounded,
 } from '@mui/icons-material';
@@ -33,6 +31,7 @@ import { eventosJson } from '../../services/eventos';
 
 import './styles.css';
 import { Evento } from '../../types';
+import { EmptyCard } from '../../components/EmptyCard';
 
 dayjs().format();
 
@@ -46,10 +45,12 @@ const Transition = React.forwardRef(function Transition(
 });
 
 const Dashboard = () => {
-  // const [eventos, setEventos] = useState(eventosJson);
+  const [eventos, setEventos] = useState(eventosJson);
   const [tocarEvento, setTocarEvento] = useState('');
   const [dataEvento, setDataEvento] = useState('');
-  const [eventosFiltrados, setEventosFiltrados] = useState<Evento[]>([]);
+  const [eventosFiltrados, setEventosFiltrados] = useState<Evento[]>([
+    ...eventosJson,
+  ]);
   const [listaDatasEventos, setListaDatasEventos] = useState([]);
 
   const [linkCopiado, setLinkCopiado] = useState(false);
@@ -64,6 +65,12 @@ const Dashboard = () => {
     gravacaoIngles: '',
     linkOficialEvento: '',
   } as Evento);
+
+  useEffect(() => {
+    if (eventosJson.length > 0) {
+      setEventos([...eventosJson]);
+    }
+  }, [eventosJson]);
 
   useEffect(() => {
     if (linkCopiado) {
@@ -84,40 +91,30 @@ const Dashboard = () => {
   }, []);
 
   useEffect(() => {
-    if (dataEvento !== '') {
-      const eventosPorData = eventosFiltrados.filter(
-        (d) => d.data === dataEvento
-      );
+    if (dataEvento !== '' || tocarEvento !== '') {
+      let eventosPorData: Evento[] = [];
 
-      console.log({ eventosPorData });
+      if (tocarEvento !== '' && dataEvento === '') {
+        eventosPorData = eventos.filter((d) =>
+          d.proprietario.includes(tocarEvento)
+        );
+      }
 
-      setEventosFiltrados(eventosPorData);
+      if (dataEvento !== '' && tocarEvento === '') {
+        eventosPorData = eventos.filter((d) => d.data === dataEvento);
+      }
+
+      if (dataEvento !== '' && tocarEvento !== '') {
+        eventosPorData = eventos
+          .filter((d) => d.data === dataEvento)
+          .filter((d) => d.proprietario.includes(tocarEvento));
+      }
+
+      setEventosFiltrados([...eventosPorData]);
     } else {
-      setEventosFiltrados(eventosJson);
+      setEventosFiltrados(eventos);
     }
-  }, []);
-
-  useEffect(() => {
-    if (tocarEvento !== '') {
-      const eventosPorData = eventosFiltrados.filter((d) =>
-        d.proprietario.includes(tocarEvento)
-      );
-
-      setEventosFiltrados(eventosPorData);
-    } else {
-      setEventosFiltrados(eventosJson);
-    }
-  }, [tocarEvento]);
-
-  useEffect(() => {
-    if (dataEvento !== '') {
-      const eventosPorData = eventosFiltrados.filter(
-        (d) => d.data === dataEvento
-      );
-
-      setEventosFiltrados(eventosPorData);
-    }
-  }, [dataEvento]);
+  }, [dataEvento, tocarEvento]);
 
   const handleCopyLinkEvento = useCallback((link: string) => {
     setLinkCopiado(true);
@@ -194,13 +191,17 @@ const Dashboard = () => {
       </Box>
 
       <Box className={'list'}>
-        {eventosFiltrados?.map((item) => (
-          <Card
-            key={item?.cliente}
-            info={item}
-            onClickHandleEvent={handleEvento}
-          />
-        ))}
+        {eventosFiltrados?.length > 0 ? (
+          eventosFiltrados?.map((item) => (
+            <Card
+              key={item?.cliente}
+              info={item}
+              onClickHandleEvent={handleEvento}
+            />
+          ))
+        ) : (
+          <EmptyCard />
+        )}
       </Box>
 
       <Dialog
