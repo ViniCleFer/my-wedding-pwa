@@ -21,13 +21,14 @@ import {
   ArrowForwardOutlined,
   SearchRounded,
 } from '@mui/icons-material';
+import _ from 'lodash';
 import { TransitionProps } from '@mui/material/transitions';
 
 import dayjs from 'dayjs';
 import 'dayjs/locale/pt-br';
 
 import { Card } from '../../components/Card';
-import { eventosJson } from '../../services/eventos';
+import { eventosJson } from '../../services/eventoAtual';
 
 import './styles.css';
 import { Evento } from '../../types';
@@ -45,11 +46,13 @@ const Transition = React.forwardRef(function Transition(
 });
 
 const Dashboard = () => {
-  const [eventos, setEventos] = useState(eventosJson);
+  const eventosOrdenados = _.orderBy(eventosJson, ['data', 'hora'], 'asc');
+
+  const [eventos, setEventos] = useState<Evento[]>([...eventosOrdenados]);
   const [tocarEvento, setTocarEvento] = useState('');
   const [dataEvento, setDataEvento] = useState('');
   const [eventosFiltrados, setEventosFiltrados] = useState<Evento[]>([
-    ...eventosJson,
+    ...eventosOrdenados,
   ]);
   const [listaDatasEventos, setListaDatasEventos] = useState([]);
 
@@ -68,7 +71,8 @@ const Dashboard = () => {
 
   useEffect(() => {
     if (eventosJson.length > 0) {
-      setEventos([...eventosJson]);
+      const eventosOrdenados = _.orderBy(eventosJson, ['data', 'hora'], 'asc');
+      setEventos([...eventosOrdenados]);
     }
   }, [eventosJson]);
 
@@ -95,8 +99,12 @@ const Dashboard = () => {
       let eventosPorData: Evento[] = [];
 
       if (tocarEvento !== '' && dataEvento === '') {
-        eventosPorData = eventos.filter((d) =>
-          d.proprietario.includes(tocarEvento)
+        eventosPorData = eventos.filter(
+          (d) =>
+            d.proprietario.includes(tocarEvento) ||
+            d.tocarEvento.includes(tocarEvento) ||
+            d.gravacaoIngles.includes(tocarEvento) ||
+            d.cliente.includes(tocarEvento)
         );
       }
 
@@ -107,8 +115,16 @@ const Dashboard = () => {
       if (dataEvento !== '' && tocarEvento !== '') {
         eventosPorData = eventos
           .filter((d) => d.data === dataEvento)
-          .filter((d) => d.proprietario.includes(tocarEvento));
+          .filter(
+            (d) =>
+              d.proprietario.includes(tocarEvento) ||
+              d.tocarEvento.includes(tocarEvento) ||
+              d.gravacaoIngles.includes(tocarEvento) ||
+              d.cliente.includes(tocarEvento)
+          );
       }
+
+      eventosPorData = _.orderBy(eventosPorData, ['data', 'hora'], 'asc');
 
       setEventosFiltrados([...eventosPorData]);
     } else {
@@ -147,6 +163,7 @@ const Dashboard = () => {
       contaZoom: '',
       gravacaoIngles: '',
       linkOficialEvento: '',
+      linkGravacaEN: '',
     });
   }, []);
 
