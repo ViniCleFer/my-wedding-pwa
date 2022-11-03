@@ -28,7 +28,7 @@ import dayjs from 'dayjs';
 import 'dayjs/locale/pt-br';
 
 import { Card } from '../../components/Card';
-import { eventosJson } from '../../services/eventoAtual';
+import { novosEventosJson } from '../../services/eventosNovo';
 
 import './styles.css';
 import { Evento } from '../../types';
@@ -46,7 +46,7 @@ const Transition = React.forwardRef(function Transition(
 });
 
 const Dashboard = () => {
-  const eventosOrdenados = _.orderBy(eventosJson, ['data', 'hora'], 'asc');
+  const eventosOrdenados = _.orderBy(novosEventosJson, ['data', 'hora'], 'asc');
 
   const [eventos, setEventos] = useState<Evento[]>([...eventosOrdenados]);
   const [tocarEvento, setTocarEvento] = useState('');
@@ -70,11 +70,15 @@ const Dashboard = () => {
   } as Evento);
 
   useEffect(() => {
-    if (eventosJson.length > 0) {
-      const eventosOrdenados = _.orderBy(eventosJson, ['data', 'hora'], 'asc');
+    if (novosEventosJson.length > 0) {
+      const eventosOrdenados = _.orderBy(
+        novosEventosJson,
+        ['data', 'hora'],
+        'asc'
+      );
       setEventos([...eventosOrdenados]);
     }
-  }, [eventosJson]);
+  }, [novosEventosJson]);
 
   useEffect(() => {
     if (linkCopiado) {
@@ -83,8 +87,8 @@ const Dashboard = () => {
   }, [linkCopiado]);
 
   useEffect(() => {
-    if (eventosJson.length) {
-      const datas = eventosJson.map((d) => d.data);
+    if (novosEventosJson.length) {
+      const datas = novosEventosJson.map((d) => d.data);
       const datasFiltradas = datas.reduce(
         (acc: any, curr: any) => (acc.includes(curr) ? acc : [...acc, curr]),
         []
@@ -163,7 +167,7 @@ const Dashboard = () => {
       contaZoom: '',
       gravacaoIngles: '',
       linkOficialEvento: '',
-      linkGravacaEN: '',
+      linkGravacaoEN: '',
     });
   }, []);
 

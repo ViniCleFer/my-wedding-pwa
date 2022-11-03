@@ -30,7 +30,7 @@ export interface Evento {
   contaZoom: string;
   gravacaoIngles: string;
   linkOficialEvento: string;
-  linkGravacaEN: string;
+  linkGravacaoEN: string;
 }
 
 interface EventosProps {

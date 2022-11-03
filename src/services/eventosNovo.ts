@@ -1,4 +1,42 @@
-export const eventosJson = [
+export const novosEventosJson = [
+  {
+    cliente: 'ODONTOPREV | DR 3T22 | 27/10 10h',
+    data: '27/10/2022',
+    hora: '10:00',
+    proprietario: 'ALINE',
+    tocarEvento: 'ALINE',
+    contaZoom: '500',
+    gravacaoIngles: 'MICHELLE',
+    linkOficialEvento:
+      'https://tenmeetings.com.br/ten-events/#/webinar?evento=VideoconferenciadeResultados3T22-Odontoprev_396',
+    linkGravacaoEN:
+      'https://us06web.zoom.us/w/83805934698?tk=iSPvk6zk9m1BHFbh3eqnavG9QjpfoimoCgzH3s-9vVs.DQMAAAATgzkUahZoMzMyWTRPaVNBdVAzaTVFNTU0S1lnAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA',
+  },
+  {
+    cliente: 'Assaí | DR 3T22 | 27/10 11h',
+    data: '21/10/2022',
+    hora: '11:00',
+    proprietario: 'VENTURA',
+    tocarEvento: 'VENTURA',
+    contaZoom: '1000',
+    gravacaoIngles: 'GABI',
+    linkOficialEvento:
+      'https://tenmeetings.com.br/ten-events/#/webinar?evento=TeleconferenciadeResultados-3T22_812',
+    linkGravacaoEN:
+      'https://us06web.zoom.us/w/83050884595?tk=sCAxHP98KNsJ96aJ3qNRS825qenaAjDtElOW0R4ZXnY.DQMAAAATVjft8xY5Q0xXbTg5RVJHdXEyR3JKQ1NMX2tBAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA',
+  },
+  {
+    cliente: 'ISA CTEEP | DR 3T22 | 28/10 10h',
+    data: '28/10/2022',
+    hora: '10:00',
+    proprietario: 'RUSSO',
+    tocarEvento: 'RUSSO',
+    contaZoom: '500',
+    gravacaoIngles: 'MICHELLE',
+    linkOficialEvento:
+      'https://tenmeetings.com.br/ten-events/#/webinar?evento=ConferenciadeResultados3T22_651',
+    linkGravacaoEN: '',
+  },
   {
     cliente: 'INTELBRAS | DR 3T22 | 01/11 11h',
     data: '01/11/2022',
@@ -18,7 +56,7 @@ export const eventosJson = [
     proprietario: 'ALINE',
     tocarEvento: 'ALINE',
     contaZoom: '1000',
-    gravacaoIngles: 'GABI',
+    gravacaoIngles: 'MICHELLE',
     linkOficialEvento:
       'https://tenmeetings.com.br/ten-events/#/webinar?evento=ConferênciadeResultados3T22_777',
     linkGravacaoEN: '',
@@ -30,7 +68,7 @@ export const eventosJson = [
     proprietario: 'BRENNO',
     tocarEvento: 'BRENNO',
     contaZoom: '500',
-    gravacaoIngles: 'GABI',
+    gravacaoIngles: 'VENTURA',
     linkOficialEvento:
       'https://tenmeetings.com.br/ten-events/#/webinar?evento=ConferênciadeResultados-3T22TrêsTentosAgro_924',
     linkGravacaoEN: '',
@@ -93,8 +131,8 @@ export const eventosJson = [
     gravacaoIngles: 'MICHELLE E BRENNO',
     linkOficialEvento:
       'https://tenmeetings.com.br/ten-events/#/webinar?evento=VideoconferênciadeResultados3T22-Gerdau(Analistas/Investidores)_870',
-    linkGravacaoEN: '',
-    '': 'https://us06web.zoom.us/w/89487442275?tk=HPTPkicGmWuOijWbpjyeY2r-eyG7XxurBvHX6QvfYM8.DQMAAAAU1d4BYxZHTTRuSmVYMVN5ZXJ1YlY1dmJTU1lBAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA',
+    linkGravacaoEN:
+      'https://us06web.zoom.us/w/89487442275?tk=HPTPkicGmWuOijWbpjyeY2r-eyG7XxurBvHX6QvfYM8.DQMAAAAU1d4BYxZHTTRuSmVYMVN5ZXJ1YlY1dmJTU1lBAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA',
   },
   {
     cliente: 'ELETROBRAS | DR 3T22 | 10/11 14:30h',
@@ -354,7 +392,7 @@ export const eventosJson = [
     hora: '15:00',
     proprietario: 'ALINE',
     tocarEvento: 'ALINE',
-    contaZoom: '500',
+    contaZoom: '1000',
     gravacaoIngles: 'PAULO ROBERTO',
     linkOficialEvento:
       'https://tenmeetings.com.br/ten-events/#/webinar?evento=ENERGISA3T22_461',
@@ -519,7 +557,7 @@ export const eventosJson = [
     cliente: 'SLC Agrícola | DR 3T22 | 07/11 10h',
     data: '07/11/2022',
     hora: '10:00',
-    proprietario: 'ALINE/BRENNO',
+    proprietario: 'BRENNO',
     tocarEvento: 'ALINE/BRENNO',
     contaZoom: '500',
     gravacaoIngles: 'LUAN',
