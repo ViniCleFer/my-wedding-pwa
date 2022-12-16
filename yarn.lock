@@ -1815,6 +1815,11 @@
   resolved "https://registry.yarnpkg.com/@popperjs/core/-/core-2.11.6.tgz#cee20bd55e68a1720bdab363ecf0c821ded4cd45"
   integrity sha512-50/17A98tWUfQ176raKiOGXuYpLyyVMkxxG6oylzL3BPOlA6ADGdK7EYunSa4I064xerltq9TGXs8HmOk5E+vw==
 
+"@pqina/flip@^1.7.7":
+  version "1.7.7"
+  resolved "https://registry.yarnpkg.com/@pqina/flip/-/flip-1.7.7.tgz#259f9c737c31acc957ad18eac7cb5f08535f0443"
+  integrity sha512-PP2EPEm/iDflBSKHlJkTny5tM+tbaZwrtCDUhHyO8snpjwIivh3NgPzho03lJKFEKK4+KtIhWkUQraw3f1W6CA==
+
 "@remix-run/router@1.0.2":
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/@remix-run/router/-/router-1.0.2.tgz#1c17eadb2fa77f80a796ad5ea9bf108e6993ef06"
@@ -1856,6 +1861,13 @@
     "@types/estree" "0.0.39"
     estree-walker "^1.0.1"
     picomatch "^2.2.2"
+
+"@rumess/react-flip-countdown@^1.2.6":
+  version "1.2.6"
+  resolved "https://registry.yarnpkg.com/@rumess/react-flip-countdown/-/react-flip-countdown-1.2.6.tgz#2348ca56ce3071bc31f127517af6c60f57a25c20"
+  integrity sha512-M60wPi6jDFurwwUQNG20UBXOmu/6z/Zs+X1r9eXRiFIDsRudEVkwuTbzpJNDO6H6pKVtrOatQ5HD4nweoW5PHQ==
+  dependencies:
+    moment "^2.26.0"
 
 "@rushstack/eslint-patch@^1.1.0":
   version "1.2.0"
@@ -6527,6 +6539,11 @@ mkdirp@~0.5.1:
   integrity sha512-FP+p8RB8OWpF3YZBCrP5gtADmtXApB5AMLn+vdyA+PyxCjrCs00mjyUozssO33cwDeT3wNGdLxJ5M//YqtHAJw==
   dependencies:
     minimist "^1.2.6"
+
+moment@^2.26.0:
+  version "2.29.4"
+  resolved "https://registry.yarnpkg.com/moment/-/moment-2.29.4.tgz#3dbe052889fe7c1b2ed966fcb3a77328964ef108"
+  integrity sha512-5LC9SOxjSc2HF6vO2CyuTDNivEdoz2IvyJJGj6X8DJ0eFyfszE0QiEd+iXmBvUP3WHxSjFH/vIsA0EN00cgr8w==
 
 ms@2.0.0:
   version "2.0.0"

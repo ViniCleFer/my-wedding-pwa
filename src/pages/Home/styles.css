@@ -1,12 +1,5 @@
-.boxContainer-login {
-  display: flex;
-  width: 100%;
-  align-items: center;
-  flex-direction: column;
-  height: 100vh;
-  padding: 40px;
-  padding-top: 80px;
-  background-image: url('../../assets/bg.png');
+.firstContainer {
+  background-image: url('../../assets/background.jpeg');
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -25,9 +18,19 @@
   max-width: 400px;
 }
 
-.title-login {
-  color: #07004d;
+.main-names {
+  color: #333333;
+  font-family: 'Retro';
   margin-bottom: 30px;
-  font-size: 32px;
-  font-weight: 700;
+  font-size: min(144px, 12vw);
+  /* font-weight: 700; */
+}
+
+.text-date {
+  color: #333333;
+  font-family: 'Lustria';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 24px;
+  /* font-weight: 700; */
 }

@@ -1,14 +1,13 @@
 import { Routes, Route } from 'react-router-dom';
 
-import Dashboard from '../pages/Dashboard';
-// import Login from '../pages/Login';
+import Home from '../pages/Home';
 
-const AppRoutes = () => (
-  <Routes>
-    <Route path='/' element={<Dashboard />} />
-    <Route path='*' element={<Dashboard />} />
-    {/* <Route path='/dashboard' element={<Dashboard />} /> */}
-  </Routes>
-);
+const AppRoutes = () => {
+  return (
+    <Routes>
+      <Route path='/' element={<Home />} />
+    </Routes>
+  );
+};
 
 export default AppRoutes;

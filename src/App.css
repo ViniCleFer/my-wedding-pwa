@@ -1,3 +1,16 @@
+@font-face {
+  font-family: 'Lustria';
+  src: local('Lustria'), url('./assets/fonts/lustria.woff') format('woff');
+}
+@font-face {
+  font-family: 'Raleway';
+  src: local('Raleway'), url('./assets/fonts/raleway.woff') format('woff');
+}
+@font-face {
+  font-family: 'Retro';
+  src: local('Retro'), url('./assets/fonts/retro.woff') format('woff');
+}
+
 .container {
   padding: 0 2rem;
 }
@@ -127,3 +140,9 @@
     filter: invert(1);
   }
 }
+
+/* font-family: "RetroSignatureRegular" Font dos Nomes */
+/* font-family: "lustria iCasei" Font da data e V & A */
+/* color: #333333; Text color */
+/* font-family: raleway-medium; Text Font */
+/* color: #A9B188; Primary Color */

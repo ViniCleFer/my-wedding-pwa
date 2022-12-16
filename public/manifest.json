@@ -1,11 +1,11 @@
 {
-  "theme_color": "#160B8C",
-  "background_color": "#160B8C",
+  "theme_color": "#EDECEA",
+  "background_color": "#EDECEA",
   "display": "standalone",
   "scope": "/",
   "start_url": "/",
-  "name": "Plan Ten",
-  "short_name": "Plan Ten",
+  "name": "V & A",
+  "short_name": "V & A",
   "description": "Work plan for Ten products",
   "icons": [
     {

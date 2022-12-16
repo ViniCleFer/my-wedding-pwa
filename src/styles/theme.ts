@@ -3,13 +3,11 @@ import { createTheme } from '@mui/material';
 export default createTheme({
   typography: {
     fontSize: 13,
-    fontFamily: 'Montserrat, sans-serif',
+    fontFamily: 'Raleway, sans-serif',
   },
   palette: {
     primary: {
-      main: '#160B8C',
-      dark: '#07004D',
-      light: '#D2DDFC',
+      main: '#A9B188',
     },
     secondary: {
       main: '#d01317',
@@ -22,7 +20,7 @@ export default createTheme({
       '200': '#6E6B7B',
       '400': '#BDBDBD',
       '900': '#303030',
-      A700: '#212121',
+      A700: '#333333',
     },
     error: {
       main: '#E31B0C',
