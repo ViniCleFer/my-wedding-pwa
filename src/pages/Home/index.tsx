@@ -207,7 +207,7 @@ const Home = () => {
             loading='lazy'
             allowFullScreen
             referrerPolicy='no-referrer-when-downgrade'
-            src={`https://www.google.com/maps/embed/v1/place?key=${process.env.GOOGLE_KEY}&q=Space+Needle,Fazenda+Paraizo+Itu`}
+            src={`https://www.google.com/maps/embed/v1/place?key=${process.env.REACT_APP_GOOGLE_API_KEY}&q=Space+Needle,Fazenda+Paraizo+Itu`}
           />
         </MapContainer>
       </PartyContainer>
