@@ -1,15 +1,8 @@
-import { useCallback, useEffect, useState, useRef } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import * as Yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
-import {
-  Box,
-  MenuItem,
-  Typography,
-  Select,
-  FormControl,
-  InputLabel,
-} from '@mui/material';
+import { Box, Typography } from '@mui/material';
 import { Menu, ArrowUpwardOutlined } from '@mui/icons-material';
 
 import './styles.css';
@@ -36,32 +29,33 @@ import {
   RadioInputGroup,
   Countdown,
   Button,
+  Select,
 } from '../../components';
 
-import { sendConfirmationRequest } from '../../services/requests';
+// import { sendConfirmationRequest } from '../../services/requests';
 import { Guest } from '../../services/types';
 import { getNumbersGuests, getAcceptanceTypes } from '../../helpers/guests';
 
 import PixImage from '../../assets/pix.png';
+import { ConfirmationModal } from '../../components/ConfirmationModal';
 
 const Home = () => {
   const [isScrolling, setIsScrolling] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [openModal, setOpenModal] = useState(true);
   const [totalInvited, setTotalInvited] = useState('');
-
-  const textInput = useRef(null);
 
   const formValidation = useCallback((): any => {
     return Yup.object().shape({
       name: Yup.string().required('Preencha esse campo'),
       accept: Yup.boolean(),
-      peopleTotal: Yup.number().moreThan(0).lessThan(20),
+      peopleTotal: Yup.string().required('Preencha esse campo'),
       email: Yup.string()
         .email('Digite um e-mail válido')
         .required('Preencha esse campo'),
       phone: Yup.string()
         .required('Preencha esse campo')
-        .min(13, 'Digite um telefone válido'),
+        .min(15, 'Digite um telefone válido'),
       message: Yup.string().nullable(),
     });
   }, []);
@@ -70,24 +64,31 @@ const Home = () => {
     resolver: yupResolver(formValidation()),
   });
 
-  const handleConfirmationSend = useCallback((formData: Partial<Guest>) => {
-    // async (formData: Partial<Guest>) => {
-    // const response = await sendConfirmationRequest({
-    //   name: formData.name,
-    //   email: formData.email,
-    //   phone: formData.phone,
-    //   message: formData.message,
-    //   accept: formData.accept,
-    // });
+  const handleConfirmationSend = useCallback(
+    (formData: Partial<Guest>) => {
+      // async (formData: Partial<Guest>) => {
+      // const response = await sendConfirmationRequest({
+      //   name: formData.name,
+      //   email: formData.email,
+      //   phone: formData.phone,
+      //   message: formData.message,
+      //   accept: formData.accept,
+      // });
 
-    // if (response?.status === 200) {
-    //   alert('show', JSON.stringify(formData));
-    //   // reset();
-    // } else {
-    //   alert('errou');
-    // }
-    return console.log(`${formData}`);
-  }, []);
+      // if (response?.status === 200) {
+      //   alert('show', JSON.stringify(formData));
+      //   // reset();
+      // } else {
+      //   alert('errou');
+      // }
+      reset();
+      setTotalInvited('');
+      setOpenModal(true);
+
+      return console.log({ formData });
+    },
+    [reset]
+  );
 
   useEffect(() => {
     window.onscroll = function (e) {
@@ -100,9 +101,13 @@ const Home = () => {
     };
   }, []);
 
-  function toggleMenu() {
+  const toggleMenu = useCallback(() => {
     setIsMenuOpen(false);
-  }
+  }, []);
+
+  const handleCloseModal = useCallback(() => {
+    setOpenModal(false);
+  }, []);
 
   return (
     <Container>
@@ -126,7 +131,6 @@ const Home = () => {
             <input
               type='checkbox'
               id='check'
-              ref={textInput}
               checked={isMenuOpen}
               onChange={(t) => setIsMenuOpen(t.target.checked)}
             />
@@ -224,28 +228,18 @@ const Home = () => {
         >
           <Input name='name' control={control} label='Nome Completo' required />
 
-          <FormControl fullWidth>
-            <InputLabel id='demo-simple-select-helper-label'>
-              Total de adultos
-            </InputLabel>
-            <Select
-              labelId='demo-simple-select-helper-label'
-              fullWidth
-              label='Total de adultos'
-              name='peopleTotal'
-              value={totalInvited}
-              style={{ width: '100%', marginBottom: 20 }}
-              onChange={(t) => {
-                setTotalInvited(t.target.value);
-                setValue('peopleTotal', t.target.value);
-              }}
-              required
-            >
-              {getNumbersGuests.map((ng) => (
-                <MenuItem value={ng.value}>{ng.label}</MenuItem>
-              ))}
-            </Select>
-          </FormControl>
+          <Select
+            label='Total de adultos'
+            name='peopleTotal'
+            control={control}
+            required
+            options={getNumbersGuests}
+            value={totalInvited}
+            onChange={(t) => {
+              setTotalInvited(t.target.value);
+              setValue('peopleTotal', t.target.value);
+            }}
+          />
 
           <Input
             label='E-mail'
@@ -270,7 +264,6 @@ const Home = () => {
             label='Você irá ao evento?'
             control={control}
             onChange={(t) => {
-              // setMeetingType(t.target.value);
               setValue('accept', t.target.value);
             }}
             row
@@ -284,7 +277,10 @@ const Home = () => {
             multiline
           />
 
-          <Button title='Responder' type='submit'>
+          <Button
+            title='Responder'
+            onClick={handleSubmit(handleConfirmationSend)}
+          >
             <Typography>Responder</Typography>
           </Button>
         </form>
@@ -315,6 +311,8 @@ const Home = () => {
       <FooterContainer id='footer'>
         <FooterText>Todos os direitos reservados - VF Code 2002 ©</FooterText>
       </FooterContainer>
+
+      <ConfirmationModal onClose={handleCloseModal} open={openModal} />
     </Container>
   );
 };

@@ -32,7 +32,7 @@ export const CountdownContainer = styled(Box)`
   align-items: center;
   justify-content: center;
   max-width: 1110px;
-  padding: 80px 40px 0;
+  padding: 180px 40px 0;
 
   svg {
     margin-top: 40px;
@@ -56,11 +56,6 @@ export const CountdownTitle = styled(Typography)`
   letter-spacing: 2px;
 
   display: flex;
-
-  p {
-    font-size: 30px;
-    color: ${({ theme }) => theme.palette.primary.main};
-  }
 `;
 
 export const PartyContainer = styled(Box)`
@@ -72,6 +67,7 @@ export const PartyContainer = styled(Box)`
   height: 100%;
   background-color: white;
   max-width: 1110px;
+  padding-top: 120px;
 
   @media (max-width: 600px) {
     text-align: center;
@@ -103,7 +99,7 @@ export const MessageContainer = styled(Box)`
   align-items: center;
   height: 100%;
   max-width: 1110px;
-  padding-bottom: 20px 0 80px;
+  padding: 120px 0 80px;
 `;
 
 export const ThanksContainer = styled(Box)`
@@ -114,7 +110,7 @@ export const ThanksContainer = styled(Box)`
   justify-content: center;
   background-color: white;
   max-width: 1110px;
-  padding-top: 40px;
+  padding-top: 120px;
 
   .pix {
     margin-top: 40px;

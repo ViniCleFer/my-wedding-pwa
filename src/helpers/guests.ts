@@ -1,4 +1,5 @@
 const getNumbersGuests = [
+  { value: '0', label: '0' },
   { value: '1', label: '1' },
   { value: '2', label: '2' },
   { value: '3', label: '3' },
@@ -12,8 +13,8 @@ const getNumbersGuests = [
 ];
 
 const getAcceptanceTypes = [
-  { value: 'Sim', label: 'Sim' },
-  { value: 'Não', label: 'Não' },
+  { value: true, label: 'Sim' },
+  { value: false, label: 'Não' },
 ];
 
 export { getNumbersGuests, getAcceptanceTypes };

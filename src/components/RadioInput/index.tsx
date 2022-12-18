@@ -14,7 +14,7 @@ export interface RadioInputControlledProps extends RadioGroupProps {
   label: string;
   options: {
     label: string;
-    value: string;
+    value: boolean;
   }[];
 }
 
@@ -44,6 +44,7 @@ export const RadioInputGroup = ({
           >
             {options.map((op) => (
               <FormControlLabel
+                key={op.label}
                 value={op.value}
                 control={<Radio />}
                 label={op.label}
