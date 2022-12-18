@@ -6,7 +6,14 @@ export const Container = styled(Box)`
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 30px;
+  margin-bottom: 80px;
+
+  // Modelo Contador na Vertical
+  /* @media (max-width: 600px) {
+    height: 100%;
+    flex-direction: column;
+    margin-bottom: 40px;
+  } */
 `;
 
 export const CardContainer = styled(Box)`
@@ -18,6 +25,14 @@ export const CardContainer = styled(Box)`
   & + div {
     margin-left: 20px;
   }
+
+  // Modelo Contador na Vertical
+  /* @media (max-width: 600px) {
+    margin-bottom: 20px;
+    & + div {
+      margin-left: 0;
+    }
+  } */
 `;
 
 export const CardTime = styled(Box)`
@@ -30,6 +45,10 @@ export const CardTime = styled(Box)`
   border-radius: 8px;
   max-width: 80px;
   width: 180px;
+
+  @media (max-width: 600px) {
+    max-width: 60px;
+  }
 `;
 
 export const TimeNumbers = styled(Typography)`

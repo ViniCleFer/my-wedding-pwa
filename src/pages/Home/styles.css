@@ -1,3 +1,7 @@
+html {
+  scroll-behavior: smooth;
+}
+
 .firstContainer {
   background-image: url('../../assets/background.jpeg');
   background-position: center;
@@ -5,17 +9,59 @@
   background-size: cover;
 }
 
-.form-login {
-  width: 100%;
-  background-color: #fff;
+.navbar {
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
-  flex-direction: column;
-  padding: 20px !important;
+  line-height: 5rem;
+  width: 100%;
+  top: 0;
+  position: fixed;
+  transition: all 1s;
+  z-index: 999;
+}
+
+.left span {
+  font-size: 1.5rem;
+  cursor: pointer;
+  font-family: 'Lustria';
+}
+
+.checkBtn {
+  display: none;
+}
+
+#check {
+  display: none;
+}
+
+.checkBtn {
+  cursor: pointer;
+  font-size: 36px;
+  float: right;
+  color: '#A9B188';
+  line-height: 80px;
+}
+
+.right ul {
+  display: flex;
+  list-style: none;
+}
+
+.right ul li a {
+  padding: 10px 20px;
+  font-size: 16px;
+  color: inherit;
+  font-weight: 400;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 1s;
+}
+
+.right ul li a:hover {
+  background-color: #edecea;
   border-radius: 8px;
-  margin-top: 60px !important;
-  max-width: 400px;
+  color: rgb(22, 7, 36);
 }
 
 .main-names {
@@ -32,5 +78,64 @@
   font-style: normal;
   font-weight: 400;
   font-size: 24px;
-  /* font-weight: 700; */
+}
+
+.messageFormContainer {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+  max-width: 400px;
+  padding-top: 40px;
+}
+
+@media screen and (max-width: 805px) {
+  .list {
+    width: 100%;
+    height: 100vh;
+    background-color: #edecea;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 4rem;
+    left: 100%;
+    transition: all 1s;
+  }
+
+  .left span {
+    font-size: 1rem;
+  }
+
+  #check {
+    display: none;
+  }
+
+  .checkBtn {
+    display: block;
+  }
+
+  #check:checked ~ ul {
+    left: 0%;
+  }
+}
+
+@media (max-width: 600px) {
+  .firstContainer {
+    background-size: cover;
+    width: 100%;
+    justify-content: flex-start;
+    background-position: top;
+  }
+  .main-names {
+    margin-bottom: 0;
+  }
+  .text-date {
+    font-size: 14px;
+    margin-bottom: 40px;
+  }
+
+  .messageFormContainer {
+    padding: 40px 20px;
+  }
 }

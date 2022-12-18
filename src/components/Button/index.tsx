@@ -1,12 +1,9 @@
-import ButtonMUI, { ButtonProps as ButtonPropsMUI } from '@mui/material/Button';
+import { ButtonProps as ButtonPropsMUI } from '@mui/material/Button';
+
+import { ButtonContainer } from './styles';
 
 export type ButtonProps = ButtonPropsMUI;
 
 export const Button = ({ ...rest }: ButtonProps) => {
-  return (
-    <ButtonMUI
-      style={{ width: '100%', height: 50, backgroundColor: '#07004d' }}
-      {...rest}
-    />
-  );
+  return <ButtonContainer variant='contained' {...rest} />;
 };
