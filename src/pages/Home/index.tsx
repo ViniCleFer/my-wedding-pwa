@@ -42,7 +42,7 @@ import { ConfirmationModal } from '../../components/ConfirmationModal';
 const Home = () => {
   const [isScrolling, setIsScrolling] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [openModal, setOpenModal] = useState(true);
+  const [openModal, setOpenModal] = useState(false);
   const [totalInvited, setTotalInvited] = useState('');
 
   const formValidation = useCallback((): any => {
