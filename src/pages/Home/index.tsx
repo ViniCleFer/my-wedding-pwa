@@ -309,7 +309,7 @@ const Home = () => {
       </ButtonBackToTop>
 
       <FooterContainer id='footer'>
-        <FooterText>Todos os direitos reservados - VF Code 2002 ©</FooterText>
+        <FooterText>Todos os direitos reservados - VF Code 2022 ©</FooterText>
       </FooterContainer>
 
       <ConfirmationModal onClose={handleCloseModal} open={openModal} />
