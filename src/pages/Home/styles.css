@@ -120,6 +120,10 @@ html {
   }
 }
 
+.invisible {
+  display: none;
+}
+
 @media (max-width: 600px) {
   .firstContainer {
     background-size: cover;

@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import * as Yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
@@ -30,26 +30,36 @@ import {
   Countdown,
   Button,
   Select,
+  ConfirmationModal,
 } from '../../components';
 
-// import { sendConfirmationRequest } from '../../services/requests';
-import { Guest } from '../../services/types';
+import PixImage from '../../assets/pix.png';
+
 import { getNumbersGuests, getAcceptanceTypes } from '../../helpers/guests';
 
-import PixImage from '../../assets/pix.png';
-import { ConfirmationModal } from '../../components/ConfirmationModal';
+import { sendConfirmationRequest } from '../../services/requests';
 
 const Home = () => {
   const [isScrolling, setIsScrolling] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [openModal, setOpenModal] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [totalInvited, setTotalInvited] = useState('');
+
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [amount, setAmount] = useState('');
+  const [accept, setAccept] = useState('Sim');
+  const [phone, setPhone] = useState('');
+  const [message, setMessage] = useState('');
+
+  const formRef = useRef<any>();
 
   const formValidation = useCallback((): any => {
     return Yup.object().shape({
       name: Yup.string().required('Preencha esse campo'),
-      accept: Yup.boolean(),
-      peopleTotal: Yup.string().required('Preencha esse campo'),
+      accept: Yup.string(),
+      amount: Yup.string().required('Preencha esse campo'),
       email: Yup.string()
         .email('Digite um e-mail válido')
         .required('Preencha esse campo'),
@@ -64,31 +74,29 @@ const Home = () => {
     resolver: yupResolver(formValidation()),
   });
 
-  const handleConfirmationSend = useCallback(
-    (formData: Partial<Guest>) => {
-      // async (formData: Partial<Guest>) => {
-      // const response = await sendConfirmationRequest({
-      //   name: formData.name,
-      //   email: formData.email,
-      //   phone: formData.phone,
-      //   message: formData.message,
-      //   accept: formData.accept,
-      // });
+  useEffect(() => {
+    if (totalInvited) {
+      setValue('amount', totalInvited);
+      setAmount(totalInvited);
+    }
+  }, [totalInvited, setValue]);
 
-      // if (response?.status === 200) {
-      //   alert('show', JSON.stringify(formData));
-      //   // reset();
-      // } else {
-      //   alert('errou');
-      // }
-      reset();
-      setTotalInvited('');
-      setOpenModal(true);
+  const handleConfirmationSend = useCallback(async () => {
+    setLoading(true);
+    try {
+      const response = await sendConfirmationRequest(formRef.current);
 
-      return console.log({ formData });
-    },
-    [reset]
-  );
+      if (response?.status === 200) {
+        reset();
+        setTotalInvited('');
+        setOpenModal(true);
+      }
+    } catch (error) {
+      console.error('Error handleConfirmationSend', error);
+    } finally {
+      setLoading(false);
+    }
+  }, [reset]);
 
   useEffect(() => {
     window.onscroll = function (e) {
@@ -223,32 +231,43 @@ const Home = () => {
         />
 
         <form
+          ref={formRef}
           className='messageFormContainer'
           onSubmit={handleSubmit(handleConfirmationSend)}
         >
-          <Input name='name' control={control} label='Nome Completo' required />
-
+          <Input
+            name='name'
+            control={control}
+            label='Nome Completo'
+            required
+            onChange={(t) => {
+              setName(t.target.value);
+              setValue('name', t.target.value);
+            }}
+          />
           <Select
             label='Total de adultos'
-            name='peopleTotal'
+            name='amount'
             control={control}
             required
             options={getNumbersGuests}
             value={totalInvited}
             onChange={(t) => {
               setTotalInvited(t.target.value);
-              setValue('peopleTotal', t.target.value);
+              setValue('amount', t.target.value);
             }}
           />
-
           <Input
             label='E-mail'
             className='input'
             name='email'
             control={control}
             required
+            onChange={(t) => {
+              setEmail(t.target.value);
+              setValue('email', t.target.value);
+            }}
           />
-
           <Input
             label='Celular'
             name='phone'
@@ -256,33 +275,43 @@ const Home = () => {
             InputProps={{
               inputComponent: CellphoneInput as any,
             }}
+            onChange={(t) => {
+              setPhone(t.target.value);
+              setValue('phone', t.target.value);
+            }}
             required
           />
-
           <RadioInputGroup
             name='accept'
             label='Você irá ao evento?'
             control={control}
             onChange={(t) => {
               setValue('accept', t.target.value);
+              setAccept(t.target.value);
             }}
             row
             options={getAcceptanceTypes}
           />
-
           <Input
             label='Mensagem aos Noivos'
             name='message'
             control={control}
             multiline
+            onChange={(t) => {
+              setValue('message', t.target.value);
+              setMessage(t.target.value);
+            }}
           />
-
-          <Button
-            title='Responder'
-            onClick={handleSubmit(handleConfirmationSend)}
-          >
+          <Button title='Responder' isLoading={loading} type='submit'>
             <Typography>Responder</Typography>
           </Button>
+
+          <input value={name} name='from_name' className='invisible' />
+          <input value={email} name='from_email' className='invisible' />
+          <input value={amount} name='from_amount' className='invisible' />
+          <input value={accept} name='from_accept' className='invisible' />
+          <input value={phone} name='from_phone' className='invisible' />
+          <input value={message} name='from_message' className='invisible' />
         </form>
       </MessageContainer>
 
