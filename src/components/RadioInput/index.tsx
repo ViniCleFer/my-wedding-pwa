@@ -14,7 +14,7 @@ export interface RadioInputControlledProps extends RadioGroupProps {
   label: string;
   options: {
     label: string;
-    value: boolean;
+    value: string;
   }[];
 }
 

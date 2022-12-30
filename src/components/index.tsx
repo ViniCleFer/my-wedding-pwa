@@ -5,6 +5,7 @@ import { CellphoneInput } from './CellphoneInput';
 import { Select } from './Select';
 import { RadioInputGroup } from './RadioInput';
 import { Countdown } from './Countdown';
+import { ConfirmationModal } from './ConfirmationModal';
 
 export {
   Button,
@@ -14,4 +15,5 @@ export {
   Select,
   RadioInputGroup,
   Countdown,
+  ConfirmationModal,
 };

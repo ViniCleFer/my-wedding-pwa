@@ -31,7 +31,6 @@ export const Countdown = () => {
 
       const qntosDias = date1.diff(date2, 'day');
       setDays(qntosDias);
-      // console.log('em date2', date2);
     }, 1000);
   }, []);
 
@@ -39,7 +38,7 @@ export const Countdown = () => {
     <Container>
       <CardContainer>
         <CardTime>
-          <TimeNumbers>{days - 1}</TimeNumbers>
+          <TimeNumbers>{days}</TimeNumbers>
         </CardTime>
         <TimeText>Dias</TimeText>
       </CardContainer>
