@@ -1,8 +1,9 @@
 export interface Guest {
   id?: string;
   name: string;
-  email: string | null;
-  phone: string | null;
-  message?: string | null;
+  amount: string;
+  email: string;
+  phone: string;
+  message?: string;
   accept: boolean;
 }
