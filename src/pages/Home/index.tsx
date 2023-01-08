@@ -163,13 +163,13 @@ const Home = () => {
                 </a>
               </li>
               <li>
-                <a id='link' onClick={toggleMenu} href='#message'>
-                  Confirmar Presença
+                <a id='link' onClick={toggleMenu} href='#thanks'>
+                  Presentes
                 </a>
               </li>
               <li>
-                <a id='link' onClick={toggleMenu} href='#thanks'>
-                  Presentes
+                <a id='link' onClick={toggleMenu} href='#message'>
+                  Confirmar Presença
                 </a>
               </li>
             </ul>
@@ -223,6 +223,19 @@ const Home = () => {
           />
         </MapContainer>
       </PartyContainer>
+
+      <ThanksContainer id='thanks'>
+        <Card
+          title='Quer nos presentear?'
+          subtitle='Faça um pix de qualquer valor através do QR Code abaixo'
+        />
+
+        <img className='pix' src={PixImage} alt='pix-vinicius' />
+
+        <ThanksTitle>
+          Muito obrigado <p>☺</p>
+        </ThanksTitle>
+      </ThanksContainer>
 
       <MessageContainer id='message'>
         <Card
@@ -314,19 +327,6 @@ const Home = () => {
           <input value={message} name='from_message' className='invisible' />
         </form>
       </MessageContainer>
-
-      <ThanksContainer id='thanks'>
-        <Card
-          title='Quer nos presentear?'
-          subtitle='Faça um pix de qualquer valor através do QR Code abaixo'
-        />
-
-        <img className='pix' src={PixImage} alt='pix-vinicius' />
-
-        <ThanksTitle>
-          Muito obrigado <p>☺</p>
-        </ThanksTitle>
-      </ThanksContainer>
 
       <ButtonBackToTop
         type='button'
